@@ -50,3 +50,7 @@ You can ask your MCP host with the below prompt:
 ```
 Use the `blue_bridge_query_azure_resource_graph` mcp function the run the below Azure Resource Graph query: resources | limit 2
 ```
+
+
+## Links
+https://aka.ms/blue-bridge
