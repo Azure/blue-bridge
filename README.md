@@ -23,7 +23,7 @@ git clone https://github.com/Azure/blue-bridge.git
 cd blue-bridge
 ```
 
-## 1 · Run the container
+## 1 · Run the container
 
 Set the optional environment variables you need and start the image:
 
@@ -49,7 +49,7 @@ docker run --name bluebridge -p 6688:6688 \
   bluebridge.azurecr.io/bluebridge:latest
 ```
 
-## 2 · Authenticate once
+## 2 · Authenticate once
 
 On first start the container prints a device‑code prompt such as:
 
@@ -61,7 +61,7 @@ and enter the code ABCD‑EFGH to authenticate.
 Open the link, enter the code, and grant consent.  
 After that the server is ready at **http://localhost:6688**.
 
-## 3 · Add to your MCP host
+## 3 · Add to your MCP host
 
 ```jsonc
 {
@@ -77,7 +77,7 @@ After that the server is ready at **http://localhost:6688**.
 }
 ```
 
-## 4 · Run a quick test
+## 4 · Run a quick test
 
 Ask your MCP host:
 
