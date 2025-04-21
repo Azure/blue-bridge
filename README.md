@@ -1,56 +1,93 @@
-# blue-bridge
-A Model Context Protocol (MCP) server implementation for querying and managing Azure resources — built‑in support for Azure Managed Grafana, Azure Data Explorer (Kusto), Azure Resource Graph, Azure Resource Manager and more. Leverages User Identity or Managed Identity for secure, seamless integration via the C# MCP SDK.
+# Blue Bridge
 
-## 🛠️ Getting Started
+A Model Context Protocol (MCP) server for querying and managing Azure resources with zero‑secret authentication.  
+Out of the box it supports:
 
-### Run the MCP server in docker
-If you want to connect to an Azure Managed Grafana, please set the Grafana endpoint using environment variable `BlueBridgeOptions__AzureManagedGrafanaEndpoint`. If you want to connect to an Azure Data Explorer (Kusto), please set the Kusto Uri using environment variable `BlueBridgeOptions__AzureDataExplorerUri`. You can skip these two if you do not want to use them.
+- **Azure Managed Grafana**
+- **Azure Data Explorer (Kusto)**
+- **Azure Resource Graph**
+- **Azure Resource Manager**
 
-Example command
+Authentication is handled by the signed‑in Azure CLI account or a Managed Identity—no passwords or keys are stored.
+
+---
+
+# 🚀 Quick start
+
+## 1 · Run the container
+
+Set the optional environment variables you need and start the image:
+
+```bash
+docker run --name bluebridge -p 6688:6688 \
+  -e BlueBridgeOptions__AzureManagedGrafanaEndpoint=https://<my‑grafana>.wcus.grafana.azure.com \
+  -e BlueBridgeOptions__AzureDataExplorerUri=https://<my‑kusto>.westus2.kusto.windows.net \
+  bluebridge.azurecr.io/bluebridge:latest
 ```
-docker run --name bluebridge -p 6688:6688 -e BlueBridgeOptions__AzureManagedGrafanaEndpoint=https://my-azure-managed-grafana-djdfi23fasdagdp.wcus.grafana.azure.com  -e BlueBridgeOptions__AzureDataExplorerUri=https://my-kusto-cluster.westus2.kusto.windows.net bluebridge.azurecr.io/bluebridge:latest
+
+If you only need Kusto:
+
+```bash
+docker run --name bluebridge -p 6688:6688 \
+  -e BlueBridgeOptions__AzureDataExplorerUri=https://<my‑kusto>.westus2.kusto.windows.net \
+  bluebridge.azurecr.io/bluebridge:latest
 ```
 
-```
-docker run --name bluebridge -p 6688:6688 -e BlueBridgeOptions__AzureDataExplorerUri=https://my-kusto-cluster.westus2.kusto.windows.net bluebridge.azurecr.io/bluebridge:latest
+Or with no external services:
+
+```bash
+docker run --name bluebridge -p 6688:6688 \
+  bluebridge.azurecr.io/bluebridge:latest
 ```
 
-```
-docker run --name bluebridge -p 6688:6688 bluebridge.azurecr.io/bluebridge:latest
-```
+## 2 · Authenticate once
 
-### Login the MCP server.
-The MCP server's autehntication is based on azure cli. The container initial log will contain a device login. Please follow the command to login.
+On first start the container prints a device‑code prompt such as:
 
 ```
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FCEZCXCGU to authenticate.
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin
+and enter the code ABCD‑EFGH to authenticate.
 ```
 
-After the login, the MCP server will be running on your localhost.
+Open the link, enter the code, and grant consent.  
+After that the server is ready at **http://localhost:6688**.
 
-### Connect MCP host
-MCP configuration
-``` json
+## 3 · Add to your MCP host
+
+```jsonc
 {
-    "mcpServers": {
-      "blue-bridge": {
-        "autoApprove": [],
-        "disabled": false,
-        "timeout": 60,
-        "url": "http://localhost:6688/sse",
-        "transportType": "sse"
-      }
+  "mcpServers": {
+    "blue-bridge": {
+      "url": "http://localhost:6688/sse",
+      "transportType": "sse",
+      "timeout": 60,
+      "disabled": false,
+      "autoApprove": []
     }
   }
+}
 ```
 
-### Try it out
-You can ask your MCP host with the below prompt:
+## 4 · Run a quick test
+
+Ask your MCP host:
 
 ```
-Use the `blue_bridge_query_azure_resource_graph` mcp function the run the below Azure Resource Graph query: resources | limit 2
+Use the `blue_bridge_query_azure_resource_graph` tool to execute:
+resources | limit 2
 ```
 
+---
 
-## Links
-https://aka.ms/blue-bridge
+## 🔧 Environment variables
+
+| Variable                                           | Purpose                                         | Required |
+| -------------------------------------------------- | ----------------------------------------------- | -------- |
+| `BlueBridgeOptions__AzureManagedGrafanaEndpoint`   | Azure Managed Grafana endpoint URL              | No       |
+| `BlueBridgeOptions__AzureDataExplorerUri`          | Azure Data Explorer (Kusto) cluster URI         | No       |
+
+---
+
+## 📚 Links
+
+- Docs & samples: https://aka.ms/blue-bridge
