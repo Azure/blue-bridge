@@ -25,6 +25,10 @@ cd blue-bridge
 
 ## 1 · Run the container
 
+Blue Bridge supports **Azure Resource Graph** and **Azure Resource Manager** out-of-the-box without any additional configuration.
+
+To connect to **Azure Managed Grafana** or **Azure Data Explorer (Kusto)**, set the corresponding environment variables when running the container.
+
 Set the optional environment variables you need and start the image:
 
 ```bash
