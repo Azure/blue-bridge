@@ -82,9 +82,10 @@ After that the server is ready at **http://localhost:6688**.
 Ask your MCP host:
 
 ```
-Use the `blue_bridge_query_azure_resource_graph` tool to execute:
-resources | limit 2
+Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
 ```
+
+![Result](mcp-suggest-turn-off-vm-2504.png)
 
 ---
 
