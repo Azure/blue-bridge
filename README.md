@@ -14,6 +14,15 @@ Authentication is handled by the signed‑in Azure CLI account or a Managed Id
 
 # 🚀 Quick start
 
+## 0 · Clone the repository
+
+Clone the repository to get the necessary files, including recipes and usage examples found in `manual-for-ai.md`.
+
+```bash
+git clone https://github.com/Azure/blue-bridge.git
+cd blue-bridge
+```
+
 ## 1 · Run the container
 
 Set the optional environment variables you need and start the image:
