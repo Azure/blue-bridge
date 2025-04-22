@@ -33,8 +33,8 @@ Set the optional environment variables you need and start the image:
 
 ```bash
 docker run --name bluebridge -p 6688:6688 \
-  -e BlueBridgeOptions__AzureManagedGrafanaEndpoint=https://<my‑grafana>.wcus.grafana.azure.com \
-  -e BlueBridgeOptions__AzureDataExplorerUri=https://<my‑kusto>.westus2.kusto.windows.net \
+  -e AzureManagedGrafanaEndpoint=https://<my‑grafana>.wcus.grafana.azure.com \
+  -e KustoUri=https://<my‑kusto>.westus2.kusto.windows.net \
   bluebridge.azurecr.io/bluebridge:latest
 ```
 
@@ -42,7 +42,7 @@ If you only need Kusto:
 
 ```bash
 docker run --name bluebridge -p 6688:6688 \
-  -e BlueBridgeOptions__AzureDataExplorerUri=https://<my‑kusto>.westus2.kusto.windows.net \
+  -e KustoUri=https://<my‑kusto>.westus2.kusto.windows.net \
   bluebridge.azurecr.io/bluebridge:latest
 ```
 
@@ -97,8 +97,8 @@ Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save mon
 
 | Variable                                           | Purpose                                         | Required |
 | -------------------------------------------------- | ----------------------------------------------- | -------- |
-| `BlueBridgeOptions__AzureManagedGrafanaEndpoint`   | Azure Managed Grafana endpoint URL              | No       |
-| `BlueBridgeOptions__AzureDataExplorerUri`          | Azure Data Explorer (Kusto) cluster URI         | No       |
+| `AzureManagedGrafanaEndpoint`   | Azure Managed Grafana endpoint URL              | No       |
+| `KustoUri`          | Azure Data Explorer (Kusto) cluster URI         | No       |
 
 ---
 
