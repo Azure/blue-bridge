@@ -98,7 +98,13 @@ Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save mon
 | Variable                                           | Purpose                                         | Required |
 | -------------------------------------------------- | ----------------------------------------------- | -------- |
 | `AzureManagedGrafanaEndpoint`   | Azure Managed Grafana endpoint URL              | No       |
-| `KustoUri`          | Azure Data Explorer (Kusto) cluster URI         | No       |
+| `KustoUri`                      | Azure Data Explorer (Kusto) cluster URI         | No       |
+| `UseManagedIdentity`            | Set to `true` to use managed identity.          | No       |
+| `ManagedIdentityClientId`       | Client ID of the managed identity to use.       | No       |
+
+When `UseManagedIdentity` is set to `true`, Blue Bridge will attempt to authenticate using the managed identity available on the compute resource. This works automatically if there is only one managed identity (either system-assigned or user-assigned).
+
+If the compute resource has multiple managed identities, you must specify which one to use by setting the `ManagedIdentityClientId` environment variable to the client ID of the desired managed identity.
 
 ---
 
