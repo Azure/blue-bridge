@@ -104,7 +104,7 @@ Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save mon
 
 When `UseManagedIdentity` is set to `true`, Blue Bridge will attempt to authenticate using the managed identity available on the compute resource. This works automatically if there is only one managed identity (either system-assigned or user-assigned).
 
-If the compute resource has multiple managed identities, you must specify which one to use by setting the `ManagedIdentityClientId` environment variable to the client ID of the desired managed identity.
+If the compute resource has multiple managed identities, you must specify which one to use by setting the `ManagedIdentityClientId` environment variable to the client ID of the desired managed identity. Note that setting `ManagedIdentityClientId` implies the use of managed identity, so setting `UseManagedIdentity` to `true` is not necessary in this case.
 
 ---
 
