@@ -12,6 +12,18 @@ Authentication is handled by the signed‑in Azure CLI account or a Managed Id
 
 ---
 
+# ✨ Demo
+
+1. Given 'manual-for-ai.md', get me the CPU quota for subscription '3a7edf7d-1488-4017-a908-e50d0a1642a6'
+
+   ![Result](demo-find-cpu-quota-2504.png)
+
+2. Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
+
+   ![Result](mcp-suggest-turn-off-vm-2504.png)
+
+---
+
 # 🚀 Quick start
 
 ## 0 · Clone the repository

@@ -103,3 +103,51 @@ This tool provides several functions for interacting with the Azure Resource Man
 **Parameters:**
 - `requestPath` (string, required): The relative path for the ARM API call.
 - `apiVersion` (string, required): The api-version for the ARM API call.
+
+## Monitor Logs Tool
+
+This tool provides functions for querying Azure logs.
+
+### Query Resource Log (`blue_bridge_query_resource_log`)
+
+**Description:** Query logs for a specific Azure resource.
+**Parameters:**
+- `azureResourceId` (string, required): Azure Resource ID (e.g., `/subscriptions/123edf7d-1488-4017-a908-e50d0a1642a6/resourceGroups/my-resource-group/providers/Microsoft.ContainerRegistry/registries/my-acr`).
+- `query` (string, required): Query in Kusto Query Language (KQL).
+
+**Example Prompt (Query ACR Pull Events):**
+```
+Use the `blue_bridge_query_resource_log` mcp function to query the pull events for the ACR resource `/subscriptions/3a7edf7d-1488-4017-a908-e50d0a1642a6/resourceGroups/gra-dev-gbl210601-wus2-rg/providers/Microsoft.ContainerRegistry/registries/gradevgbl210601wus2acr` using the following KQL query:
+
+ContainerRegistryRepositoryEvents
+| where TimeGenerated > ago(3d)
+| where OperationName == "Pull"
+| summarize pullCnt = count() by CallerIpAddress
+| order by pullCnt desc
+| limit 10
+```
+
+### Query Log Analytics Workspace (`blue_bridge_query_log_analytics_workspace`)
+
+**Description:** Query Azure Log Analytics workspace using the Kusto Query Language.
+**Parameters:**
+- `workspaceId` (string, required): Log Analytics workspace ID (e.g., `42fa5046-b92d-4646-b0d9-919a1e419c26`).
+- `query` (string, required): Query in Kusto Query Language (KQL).
+
+**Example Prompt (Query Failed Deletes in Activity Log):**
+```
+Use the `blue_bridge_query_log_analytics_workspace` mcp function to query the Azure Activity Log for failed delete operations in the last 3 days for the workspace with Id `7c7dfd29-454a-49d0-8575-ac40be959e6b` using the following KQL query:
+
+AzureActivity
+| where TimeGenerated > ago(3d)
+| where OperationNameValue endswith "/DELETE"
+| where Level == "Error"
+| project TimeGenerated, _ResourceId, Level, OperationNameValue
+```
+
+## Quota Tool (`blue_bridge_query_subscription_quota`)
+
+**Description:** Query quota limit and usages for an Azure subscription and a resource provider. Returns a list of quota resources ordered by usage percentage descending.
+**Parameters:**
+- `subscriptionId` (string, required): The Azure subscription ID.
+- `resourceProviderName` (string, required): The name of the Azure resource provider (e.g., `Microsoft.Compute`).
