@@ -97,6 +97,30 @@ This tool provides several functions for interacting with the Azure Resource Man
 - `apiVersion` (string, required): The api-version for the ARM API call.
 - `requestBody` (string, optional): A JSON string representing the HTTP request body. Defaults to null/empty.
 
+**Example Prompt (Power Off VM):**
+```
+Use the `blue_bridge_arm_http_post` mcp function to power off the Azure VM with resource ID '/subscriptions/ced61727-2249-45ac-9149-fe9d0ac99a17/resourceGroups/wuweng-mcp-vm-2504-rg/providers/Microsoft.Compute/virtualMachines/wuweng-mcp-vm-wus2-2504-01'. Use api-version '2024-03-01'.
+
+Arguments:
+{
+  "requestPath": "/subscriptions/ced61727-2249-45ac-9149-fe9d0ac99a17/resourceGroups/wuweng-mcp-vm-2504-rg/providers/Microsoft.Compute/virtualMachines/wuweng-mcp-vm-wus2-2504-01/powerOff",
+  "apiVersion": "2024-03-01",
+  "requestBody": null
+}
+```
+
+**Example Prompt (Restart VM):**
+```
+Use the `blue_bridge_arm_http_post` mcp function to restart the Azure VM with resource ID '/subscriptions/ced61727-2249-45ac-9149-fe9d0ac99a17/resourceGroups/wuweng-mcp-vm-2504-rg/providers/Microsoft.Compute/virtualMachines/wuweng-mcp-vm-wus2-2504-01'. Use api-version '2023-09-01'.
+
+Arguments:
+{
+  "requestPath": "/subscriptions/ced61727-2249-45ac-9149-fe9d0ac99a17/resourceGroups/wuweng-mcp-vm-2504-rg/providers/Microsoft.Compute/virtualMachines/wuweng-mcp-vm-wus2-2504-01/restart",
+  "apiVersion": "2023-09-01",
+  "requestBody": null
+}
+```
+
 ### DELETE (`blue_bridge_arm_http_delete`)
 
 **Description:** Sends a DELETE request to the specified Azure Resource Manager API path.
