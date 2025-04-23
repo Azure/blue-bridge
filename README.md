@@ -22,6 +22,10 @@ Authentication is handled by the signed‑in Azure CLI account or a Managed Id
 
    ![Result](mcp-suggest-turn-off-vm-2504.png)
 
+3. Given 'manual-for-ai.md', help me find 2 VMs that I can turned off to save money. Please also turn them off. Please ask for permission for each VM before you do this.
+
+   ![Result](turn-off-machine-demo-2504.png)
+
 ---
 
 # 🚀 Quick start
