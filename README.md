@@ -1,7 +1,7 @@
 # Blue Bridge
 
-A Model Context Protocol (MCP) server for querying and managing Azure resources with zero‑secret authentication.  
-Out of the box it supports:
+Sample prompts and recipies for using Model Context Protocol (MCP) server to query and manage Azure resources with zero‑secret authentication.  
+Scenarios include:
 
 - **Azure Managed Grafana**
 - **Azure Data Explorer (Kusto)**
@@ -14,17 +14,17 @@ Authentication is handled by the signed‑in Azure CLI account or a Managed Id
 
 # ✨ Demo
 
-1. Given 'manual-for-ai.md', get me the CPU quota for subscription '3a7edf7d-1488-4017-a908-e50d0a1642a6'
-
-   ![Result](images/demo-find-cpu-quota-2504.png)
-
-2. Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
+1. Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
 
    ![Result](images/mcp-suggest-turn-off-vm-2504.png)
 
-3. Given 'manual-for-ai.md', help me find 2 VMs that I can turned off to save money. Please also turn them off. Please ask for permission for each VM before you do this.
+2. Given 'manual-for-ai.md', help me find 2 VMs that I can turned off to save money. Please also turn them off. Please ask for permission for each VM before you do this.
 
    ![Result](images/turn-off-machine-demo-2504.png)
+
+3. Given 'manual-for-ai.md', get me the CPU quota for subscription '3a7edf7d-1488-4017-a908-e50d0a1642a6'
+
+   ![Result](images/demo-find-cpu-quota-2504.png)
 
 ---
 
