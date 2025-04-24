@@ -16,15 +16,15 @@ Authentication is handled by the signed‑in Azure CLI account or a Managed Id
 
 1. Given 'manual-for-ai.md', get me the CPU quota for subscription '3a7edf7d-1488-4017-a908-e50d0a1642a6'
 
-   ![Result](demo-find-cpu-quota-2504.png)
+   ![Result](images/demo-find-cpu-quota-2504.png)
 
 2. Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
 
-   ![Result](mcp-suggest-turn-off-vm-2504.png)
+   ![Result](images/mcp-suggest-turn-off-vm-2504.png)
 
 3. Given 'manual-for-ai.md', help me find 2 VMs that I can turned off to save money. Please also turn them off. Please ask for permission for each VM before you do this.
 
-   ![Result](turn-off-machine-demo-2504.png)
+   ![Result](images/turn-off-machine-demo-2504.png)
 
 ---
 
@@ -105,7 +105,7 @@ Ask your MCP host:
 Given 'manual-for-ai.md', show me 5 VMs that I can turn off machines to save money.
 ```
 
-![Result](mcp-suggest-turn-off-vm-2504.png)
+![Result](images/mcp-suggest-turn-off-vm-2504.png)
 
 ---
 
