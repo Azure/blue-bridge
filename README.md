@@ -1,6 +1,6 @@
 # Blue Bridge
 
-Sample prompts and recipies for using Model Context Protocol (MCP) server to query and manage Azure resources with zero‑secret authentication.  
+Sample prompts and recipes for using Model Context Protocol (MCP) server to query and manage Azure resources with zero‑secret authentication.  
 Scenarios include:
 
 - **Azure Managed Grafana**
