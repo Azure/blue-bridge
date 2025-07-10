@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/azure-blue-bridge-badge.png)](https://mseep.ai/app/azure-blue-bridge)
+
 # Blue Bridge
 
 Sample prompts and recipes for using Model Context Protocol (MCP) server to query and manage Azure resources with zero‑secret authentication.  
